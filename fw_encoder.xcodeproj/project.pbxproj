@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B047F21E197FBE5B00A04CE1 /* myapp.iconset in Resources */ = {isa = PBXBuildFile; fileRef = B047F21D197FBE5B00A04CE1 /* myapp.iconset */; };
+		B0675457197CA62800F8E897 /* FwFtpList.m in Sources */ = {isa = PBXBuildFile; fileRef = B0675456197CA62800F8E897 /* FwFtpList.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B067545A197CC08500F8E897 /* FwFtpCreateDir.m in Sources */ = {isa = PBXBuildFile; fileRef = B0675459197CC08500F8E897 /* FwFtpCreateDir.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B067546A197CFB3E00F8E897 /* FwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0675469197CFB3E00F8E897 /* FwViewController.m */; };
+		B067546E197CFBA700F8E897 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B067546C197CFBA700F8E897 /* HomeViewController.m */; };
+		B067546F197CFBA700F8E897 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B067546D197CFBA700F8E897 /* HomeView.xib */; };
+		B0675473197CFC6A00F8E897 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0675471197CFC6A00F8E897 /* SettingViewController.m */; };
+		B0675474197CFC6A00F8E897 /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0675472197CFC6A00F8E897 /* SettingView.xib */; };
+		B0675478197CFC9300F8E897 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0675476197CFC9300F8E897 /* HelpViewController.m */; };
+		B0675479197CFC9300F8E897 /* HelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0675477197CFC9300F8E897 /* HelpView.xib */; };
+		B06AFF8C1975766C007E537C /* FwString.m in Sources */ = {isa = PBXBuildFile; fileRef = B06AFF8B1975766C007E537C /* FwString.m */; };
+		B092005D19738153005386A0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B092005B197380FB005386A0 /* CFNetwork.framework */; };
+		B09CC2AD1970E44200537039 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09CC2AC1970E44200537039 /* Cocoa.framework */; };
+		B09CC2B71970E44200537039 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B09CC2B51970E44200537039 /* InfoPlist.strings */; };
+		B09CC2B91970E44200537039 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B09CC2B81970E44200537039 /* main.m */; };
+		B09CC2BD1970E44200537039 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B09CC2BB1970E44200537039 /* Credits.rtf */; };
+		B09CC2C01970E44200537039 /* FwAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B09CC2BF1970E44200537039 /* FwAppDelegate.m */; };
+		B09CC2C31970E44200537039 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09CC2C11970E44200537039 /* MainMenu.xib */; };
+		B09CC2C61970E44200537039 /* fw_encoder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B09CC2C41970E44200537039 /* fw_encoder.xcdatamodeld */; };
+		B0B6CD271978CA480070EB59 /* FwFtpUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B6CD261978CA480070EB59 /* FwFtpUpload.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B047F21D197FBE5B00A04CE1 /* myapp.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = myapp.iconset; path = ../myapp.iconset; sourceTree = "<group>"; };
+		B0675455197CA62800F8E897 /* FwFtpList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwFtpList.h; sourceTree = "<group>"; };
+		B0675456197CA62800F8E897 /* FwFtpList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwFtpList.m; sourceTree = "<group>"; };
+		B0675458197CC08500F8E897 /* FwFtpCreateDir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwFtpCreateDir.h; sourceTree = "<group>"; };
+		B0675459197CC08500F8E897 /* FwFtpCreateDir.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwFtpCreateDir.m; sourceTree = "<group>"; };
+		B0675468197CFB3E00F8E897 /* FwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwViewController.h; sourceTree = "<group>"; };
+		B0675469197CFB3E00F8E897 /* FwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwViewController.m; sourceTree = "<group>"; };
+		B067546B197CFBA700F8E897 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		B067546C197CFBA700F8E897 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B067546D197CFBA700F8E897 /* HomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeView.xib; path = ../HomeView.xib; sourceTree = "<group>"; };
+		B0675470197CFC6A00F8E897 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		B0675471197CFC6A00F8E897 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		B0675472197CFC6A00F8E897 /* SettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingView.xib; path = ../SettingView.xib; sourceTree = "<group>"; };
+		B0675475197CFC9300F8E897 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		B0675476197CFC9300F8E897 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		B0675477197CFC9300F8E897 /* HelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpView.xib; path = ../HelpView.xib; sourceTree = "<group>"; };
+		B06AFF8A1975766C007E537C /* FwString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwString.h; sourceTree = "<group>"; };
+		B06AFF8B1975766C007E537C /* FwString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwString.m; sourceTree = "<group>"; };
+		B092005B197380FB005386A0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B09CC2A91970E44200537039 /* fw_encoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fw_encoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B09CC2AC1970E44200537039 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		B09CC2AF1970E44200537039 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		B09CC2B01970E44200537039 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B09CC2B11970E44200537039 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B09CC2B41970E44200537039 /* fw_encoder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "fw_encoder-Info.plist"; sourceTree = "<group>"; };
+		B09CC2B61970E44200537039 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B09CC2B81970E44200537039 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B09CC2BA1970E44200537039 /* fw_encoder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fw_encoder-Prefix.pch"; sourceTree = "<group>"; };
+		B09CC2BC1970E44200537039 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B09CC2BE1970E44200537039 /* FwAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FwAppDelegate.h; path = fw_encoder/FwAppDelegate.h; sourceTree = "<group>"; };
+		B09CC2BF1970E44200537039 /* FwAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FwAppDelegate.m; path = fw_encoder/FwAppDelegate.m; sourceTree = "<group>"; };
+		B09CC2C21970E44200537039 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B09CC2C51970E44200537039 /* fw_encoder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fw_encoder.xcdatamodel; sourceTree = "<group>"; };
+		B0B6CD251978CA480070EB59 /* FwFtpUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwFtpUpload.h; sourceTree = "<group>"; };
+		B0B6CD261978CA480070EB59 /* FwFtpUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwFtpUpload.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B09CC2A61970E44200537039 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B092005D19738153005386A0 /* CFNetwork.framework in Frameworks */,
+				B09CC2AD1970E44200537039 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B06AFF8919757471007E537C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B0B6CD241978C9C00070EB59 /* Ftp */,
+				B06AFF8A1975766C007E537C /* FwString.h */,
+				B06AFF8B1975766C007E537C /* FwString.m */,
+			);
+			name = Utils;
+			path = fw_encoder;
+			sourceTree = "<group>";
+		};
+		B0725CAF1977D182004B4BF2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B09CC2BE1970E44200537039 /* FwAppDelegate.h */,
+				B09CC2BF1970E44200537039 /* FwAppDelegate.m */,
+				B0675468197CFB3E00F8E897 /* FwViewController.h */,
+				B0675469197CFB3E00F8E897 /* FwViewController.m */,
+				B067546B197CFBA700F8E897 /* HomeViewController.h */,
+				B067546C197CFBA700F8E897 /* HomeViewController.m */,
+				B0675470197CFC6A00F8E897 /* SettingViewController.h */,
+				B0675471197CFC6A00F8E897 /* SettingViewController.m */,
+				B0675475197CFC9300F8E897 /* HelpViewController.h */,
+				B0675476197CFC9300F8E897 /* HelpViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B09CC2A01970E44200537039 = {
+			isa = PBXGroup;
+			children = (
+				B0725CAF1977D182004B4BF2 /* Controllers */,
+				B06AFF8919757471007E537C /* Utils */,
+				B09CC2B21970E44200537039 /* fw_encoder */,
+				B09CC2AB1970E44200537039 /* Frameworks */,
+				B09CC2AA1970E44200537039 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B09CC2AA1970E44200537039 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B09CC2A91970E44200537039 /* fw_encoder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B09CC2AB1970E44200537039 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B092005B197380FB005386A0 /* CFNetwork.framework */,
+				B09CC2AC1970E44200537039 /* Cocoa.framework */,
+				B09CC2AE1970E44200537039 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B09CC2AE1970E44200537039 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B09CC2AF1970E44200537039 /* AppKit.framework */,
+				B09CC2B01970E44200537039 /* CoreData.framework */,
+				B09CC2B11970E44200537039 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		B09CC2B21970E44200537039 /* fw_encoder */ = {
+			isa = PBXGroup;
+			children = (
+				B0675477197CFC9300F8E897 /* HelpView.xib */,
+				B0675472197CFC6A00F8E897 /* SettingView.xib */,
+				B067546D197CFBA700F8E897 /* HomeView.xib */,
+				B09CC2C11970E44200537039 /* MainMenu.xib */,
+				B09CC2C41970E44200537039 /* fw_encoder.xcdatamodeld */,
+				B09CC2B31970E44200537039 /* Supporting Files */,
+			);
+			path = fw_encoder;
+			sourceTree = "<group>";
+		};
+		B09CC2B31970E44200537039 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B047F21D197FBE5B00A04CE1 /* myapp.iconset */,
+				B09CC2B41970E44200537039 /* fw_encoder-Info.plist */,
+				B09CC2B51970E44200537039 /* InfoPlist.strings */,
+				B09CC2B81970E44200537039 /* main.m */,
+				B09CC2BA1970E44200537039 /* fw_encoder-Prefix.pch */,
+				B09CC2BB1970E44200537039 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B0B6CD241978C9C00070EB59 /* Ftp */ = {
+			isa = PBXGroup;
+			children = (
+				B0B6CD251978CA480070EB59 /* FwFtpUpload.h */,
+				B0B6CD261978CA480070EB59 /* FwFtpUpload.m */,
+				B0675455197CA62800F8E897 /* FwFtpList.h */,
+				B0675456197CA62800F8E897 /* FwFtpList.m */,
+				B0675458197CC08500F8E897 /* FwFtpCreateDir.h */,
+				B0675459197CC08500F8E897 /* FwFtpCreateDir.m */,
+			);
+			name = Ftp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B09CC2A81970E44200537039 /* fwl_encoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B09CC2C91970E44200537039 /* Build configuration list for PBXNativeTarget "fwl_encoder" */;
+			buildPhases = (
+				B09CC2A51970E44200537039 /* Sources */,
+				B09CC2A61970E44200537039 /* Frameworks */,
+				B09CC2A71970E44200537039 /* Resources */,
+				B09CC2D0197215DA00537039 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fwl_encoder;
+			productName = fw_encoder;
+			productReference = B09CC2A91970E44200537039 /* fw_encoder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B09CC2A11970E44200537039 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Fw;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "fw-labs";
+			};
+			buildConfigurationList = B09CC2A41970E44200537039 /* Build configuration list for PBXProject "fw_encoder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B09CC2A01970E44200537039;
+			productRefGroup = B09CC2AA1970E44200537039 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B09CC2A81970E44200537039 /* fwl_encoder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B09CC2A71970E44200537039 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B09CC2B71970E44200537039 /* InfoPlist.strings in Resources */,
+				B09CC2BD1970E44200537039 /* Credits.rtf in Resources */,
+				B09CC2C31970E44200537039 /* MainMenu.xib in Resources */,
+				B067546F197CFBA700F8E897 /* HomeView.xib in Resources */,
+				B0675474197CFC6A00F8E897 /* SettingView.xib in Resources */,
+				B0675479197CFC9300F8E897 /* HelpView.xib in Resources */,
+				B047F21E197FBE5B00A04CE1 /* myapp.iconset in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B09CC2D0197215DA00537039 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B09CC2A51970E44200537039 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B09CC2B91970E44200537039 /* main.m in Sources */,
+				B09CC2C01970E44200537039 /* FwAppDelegate.m in Sources */,
+				B09CC2C61970E44200537039 /* fw_encoder.xcdatamodeld in Sources */,
+				B06AFF8C1975766C007E537C /* FwString.m in Sources */,
+				B0B6CD271978CA480070EB59 /* FwFtpUpload.m in Sources */,
+				B0675457197CA62800F8E897 /* FwFtpList.m in Sources */,
+				B067545A197CC08500F8E897 /* FwFtpCreateDir.m in Sources */,
+				B067546A197CFB3E00F8E897 /* FwViewController.m in Sources */,
+				B067546E197CFBA700F8E897 /* HomeViewController.m in Sources */,
+				B0675473197CFC6A00F8E897 /* SettingViewController.m in Sources */,
+				B0675478197CFC9300F8E897 /* HelpViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B09CC2B51970E44200537039 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B09CC2B61970E44200537039 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B09CC2BB1970E44200537039 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B09CC2BC1970E44200537039 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		B09CC2C11970E44200537039 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B09CC2C21970E44200537039 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B09CC2C71970E44200537039 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B09CC2C81970E44200537039 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B09CC2CA1970E44200537039 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "fw_encoder/fw_encoder-Prefix.pch";
+				INFOPLIST_FILE = "fw_encoder/fw_encoder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B09CC2CB1970E44200537039 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "fw_encoder/fw_encoder-Prefix.pch";
+				INFOPLIST_FILE = "fw_encoder/fw_encoder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B09CC2A41970E44200537039 /* Build configuration list for PBXProject "fw_encoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B09CC2C71970E44200537039 /* Debug */,
+				B09CC2C81970E44200537039 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B09CC2C91970E44200537039 /* Build configuration list for PBXNativeTarget "fwl_encoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B09CC2CA1970E44200537039 /* Debug */,
+				B09CC2CB1970E44200537039 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B09CC2C41970E44200537039 /* fw_encoder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B09CC2C51970E44200537039 /* fw_encoder.xcdatamodel */,
+			);
+			currentVersion = B09CC2C51970E44200537039 /* fw_encoder.xcdatamodel */;
+			path = fw_encoder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B09CC2A11970E44200537039 /* Project object */;
+}

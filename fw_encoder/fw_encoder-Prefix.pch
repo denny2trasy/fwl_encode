@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'fw_encoder' target in the 'fw_encoder' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
