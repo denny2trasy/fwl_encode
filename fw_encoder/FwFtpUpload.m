@@ -30,6 +30,8 @@ enum{
 @property (nonatomic, assign, readwrite) size_t             bufferOffset;
 @property (nonatomic, assign, readwrite) size_t             bufferLimit;
 
+// Properties about files
+@property (nonatomic, assign, readwrite) NSMutableArray *    files;
 
 
 
@@ -53,17 +55,19 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
     return nil;
 }
 
-- (instancetype)initWithUserName:(NSString *)userName andPassWord:(NSString *)password andServerAddress:(NSString *)serverAddress {
+- (instancetype)initWithUserName:(NSString *)userName andPassWord:(NSString *)password andServerAddress:(NSString *)serverAddress andFiles:(NSMutableArray *)files {
     
     self = [super init];
     if (self) {    
         self.userName = userName;
         self.passWord = password;
         self.serverAddress = serverAddress;
+        self.files = files;
     }
     return self;
 
 }
+
 
 #pragma mark * Out methods
 
@@ -77,6 +81,35 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
     
 }
 
+
+
+- (void)uploadFileAtFirstPlace{
+ 
+    assert(self.files != nil);
+    
+    NSLog(@"files count = %ld", [self.files count]);
+    
+    if ([self.files count] > 0) {
+        
+        NSString *temp = [self.files objectAtIndex:0];
+        
+        if (temp != nil) {
+            
+            NSArray *listItems = [temp componentsSeparatedByString:@","];
+            
+            NSString *localFile = [listItems objectAtIndex:0];
+            NSString *remoteFile = [listItems objectAtIndex:1];            
+            
+            [self uploadFile:localFile toRemote:remoteFile];
+            [self.files removeObjectAtIndex:0];
+            
+        }
+    }
+    
+
+}
+
+
 - (void)cancelUpload:(NSString *)statusString
 {
     if (self.networkStream != nil) {
@@ -88,6 +121,9 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
     if (self.fileStream != nil) {
         [self.fileStream close];
         self.fileStream = nil;
+    }
+    if (self.files != nil) {
+        self.files = nil;
     }
     [self updateStatus:statusString];
 }
@@ -101,6 +137,26 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 //    NSLog(@"Sending notification");
     [nc postNotificationName:UploadStatusChangedNotification object:self];
+}
+
+- (void)stopSendWithStatus:(NSString *)statusString
+{
+    if (self.networkStream != nil) {
+        [self.networkStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        self.networkStream.delegate = nil;
+        [self.networkStream close];
+        self.networkStream = nil;   
+
+    }
+    if (self.fileStream != nil) {
+        [self.fileStream close];
+        self.fileStream = nil;
+    }
+    [self updateStatus:statusString];
+    
+    if (self.files != nil && [self.files count] > 0) {
+        [self uploadFileAtFirstPlace];
+    }
 }
 
 
@@ -182,6 +238,8 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
         
         
         [self updateStatus:@"Start"];
+        
+        NSLog(@"networkStream start");
     }
     
 }
@@ -193,6 +251,8 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
 {
     #pragma unused(aStream)
     assert(aStream == self.networkStream);
+    
+    NSLog(@"come here for feedback of stream");
     
     switch (eventCode) {
         case NSStreamEventOpenCompleted: {
@@ -214,10 +274,10 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
                 bytesRead = [self.fileStream read:self.buffer maxLength:kSendBufferSize];
                 
                 if (bytesRead == -1) {
-                    [self updateStatus:@"File read error"];
+                    [self stopSendWithStatus:@"File read error"];
                     NSLog(@"File read error");
                 } else if (bytesRead == 0) {
-                    [self updateStatus:@"Upload succeeded"];
+                    [self stopSendWithStatus:@"Upload succeeded"];
                     NSLog(@"Upload succeeded");
                 } else {
                     self.bufferOffset = 0;
@@ -232,7 +292,7 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
                 bytesWritten = [self.networkStream write:&self.buffer[self.bufferOffset] maxLength:self.bufferLimit - self.bufferOffset];
                 assert(bytesWritten != 0);
                 if (bytesWritten == -1) {
-                    [self updateStatus:@"Network write error"];
+                    [self stopSendWithStatus:@"Network write error"];
                     NSLog(@"Network write error");
                 } else {
                     self.bufferOffset += bytesWritten;
@@ -240,7 +300,7 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
             }
         } break;
         case NSStreamEventErrorOccurred: {
-            [self updateStatus:@"Stream open error"];
+            [self stopSendWithStatus:@"Stream open error"];
             NSLog(@"Stream open error");
         } break;
         case NSStreamEventEndEncountered: {

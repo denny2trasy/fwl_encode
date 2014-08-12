@@ -14,11 +14,18 @@
     IBOutlet NSTextView  *encodeAreaFiles;
     IBOutlet NSTextField *encodeStatus;
     
+    IBOutlet NSButton *btnEncode;
+    IBOutlet NSButton *btnCancelEncode;
+    IBOutlet NSButton *btnUpload;
+    IBOutlet NSButton *btnCancelUpload;
+    
     IBOutlet NSTextField *ftpPwd;
     IBOutlet NSTextField *remoteFolderName;
     IBOutlet NSPopUpButton *channelFolderList;
     IBOutlet NSTextView  *uploadAreaFile;
     IBOutlet NSTextField *uploadStatus;
+    
+    NSOperationQueue *processingQueue;
     
 }
 
@@ -38,5 +45,7 @@
 
 - (IBAction)createAction:(id)sender;
 - (IBAction)listAction:(id)sender;
+
+- (void)uploadFileToServer:(NSString *)localFileAndRemoteProgramNameAndRemotePathAndRemoteFile;
 
 @end

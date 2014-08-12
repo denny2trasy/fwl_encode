@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B09CC2A81970E44200537039"
-               BuildableName = "fwl_encoder.app"
-               BlueprintName = "fwl_encoder"
+               BlueprintIdentifier = "B030C6A9198A0C730005AE6A"
+               BuildableName = "fwl_encoder copy.app"
+               BlueprintName = "gloo_encoder"
                ReferencedContainer = "container:fw_encoder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B09CC2A81970E44200537039"
-            BuildableName = "fwl_encoder.app"
-            BlueprintName = "fwl_encoder"
+            BlueprintIdentifier = "B030C6A9198A0C730005AE6A"
+            BuildableName = "fwl_encoder copy.app"
+            BlueprintName = "gloo_encoder"
             ReferencedContainer = "container:fw_encoder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,9 +51,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B09CC2A81970E44200537039"
-            BuildableName = "fwl_encoder.app"
-            BlueprintName = "fwl_encoder"
+            BlueprintIdentifier = "B030C6A9198A0C730005AE6A"
+            BuildableName = "fwl_encoder copy.app"
+            BlueprintName = "gloo_encoder"
             ReferencedContainer = "container:fw_encoder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B09CC2A81970E44200537039"
-            BuildableName = "fwl_encoder.app"
-            BlueprintName = "fwl_encoder"
+            BlueprintIdentifier = "B030C6A9198A0C730005AE6A"
+            BuildableName = "fwl_encoder copy.app"
+            BlueprintName = "gloo_encoder"
             ReferencedContainer = "container:fw_encoder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

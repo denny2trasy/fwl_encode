@@ -15,12 +15,13 @@
 
 extern NSString * const UploadStatusChangedNotification;
 
-- (instancetype)initWithUserName:(NSString *)userName andPassWord:(NSString *)password andServerAddress:(NSString *)serverAddress;
+- (instancetype)initWithUserName:(NSString *)userName andPassWord:(NSString *)password andServerAddress:(NSString *)serverAddress andFiles: (NSMutableArray *)files;
 
 // Methods
-
 - (void)uploadFile:(NSString *)localFile toRemote:(NSString *)remoteFile;
+- (void)uploadFileAtFirstPlace;
 - (void)cancelUpload:(NSString *)statuString;
+- (BOOL)isSending;
 
 
 @end

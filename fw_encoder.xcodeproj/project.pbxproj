@@ -30,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B030C6C6198A0C730005AE6A /* fwl_encoder copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "fwl_encoder copy-Info.plist"; path = "/Users/denny/private/work/git/fw_encoder/fwl_encoder copy-Info.plist"; sourceTree = "<absolute>"; };
 		B047F21D197FBE5B00A04CE1 /* myapp.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = myapp.iconset; path = ../myapp.iconset; sourceTree = "<group>"; };
 		B0675455197CA62800F8E897 /* FwFtpList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwFtpList.h; sourceTree = "<group>"; };
 		B0675456197CA62800F8E897 /* FwFtpList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwFtpList.m; sourceTree = "<group>"; };
@@ -49,7 +50,7 @@
 		B06AFF8A1975766C007E537C /* FwString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwString.h; sourceTree = "<group>"; };
 		B06AFF8B1975766C007E537C /* FwString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwString.m; sourceTree = "<group>"; };
 		B092005B197380FB005386A0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		B09CC2A91970E44200537039 /* fw_encoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fw_encoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B09CC2A91970E44200537039 /* fw_encoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = fw_encoder.app; path = fwl_encoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09CC2AC1970E44200537039 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B09CC2AF1970E44200537039 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B09CC2B01970E44200537039 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -116,6 +117,7 @@
 				B09CC2B21970E44200537039 /* fw_encoder */,
 				B09CC2AB1970E44200537039 /* Frameworks */,
 				B09CC2AA1970E44200537039 /* Products */,
+				B030C6C6198A0C730005AE6A /* fwl_encoder copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
