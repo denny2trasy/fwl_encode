@@ -91,9 +91,9 @@ FwFtpCreateDir  *ftpCreateDir;
     [self setDefaultSettingValues];
     
     // 1. get file Format for encoding
-    NSString *fileFormat = [encodeFormatList titleOfSelectedItem];
-    
-    NSLog(@"File format : %@", fileFormat);
+//    NSString *fileFormat = [encodeFormatList titleOfSelectedItem];
+//    
+//    NSLog(@"File format : %@", fileFormat);
     
     // 2. get file from area list
     NSString *inputFileList = [[encodeAreaFiles textStorage] string];
@@ -119,19 +119,26 @@ FwFtpCreateDir  *ftpCreateDir;
                 
                 NSString *inputFile = [fileItems objectAtIndex:i];
                 
+                NSLog(@"file = %@", inputFile);
+                
                 if ([inputFile isAbsolutePath] && [fm fileExistsAtPath:inputFile]) {
                     NSString *fileExt = [[FwString sharedInstance] getExtensionFromPath:inputFile];
                     
-                    if ([[fileExt lowercaseString] isEqualToString:[fileFormat lowercaseString]]) {
+                    NSString *fileFormat = [fileExt lowercaseString];
+                    
+                    NSLog(@"file format = %@", fileFormat);
+                    
+                    if ([fileFormat isEqualToString:@"mov"] || [fileFormat isEqualToString:@"ts"] || [fileFormat isEqualToString:@"mp4"] || [fileFormat isEqualToString:@"avi"]) {
                         
                         
                         [btnEncode setEnabled:NO];
                         [btnCancelEncode setEnabled:YES];
                         
+                        NSLog(@"file [%d] = %@", i, inputFile);
                         
-                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
+//                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
                         
-//                        [self encodeFileForGloo:inputFile with:fileFormat];
+                        [self encodeFileForGloo:inputFile with:fileFormat];
                         
                     }else{
                         [encodeStatus setStringValue:@"Please choose correct file with correct format"];
@@ -202,23 +209,37 @@ FwFtpCreateDir  *ftpCreateDir;
         
         if (status == 0){
             
-            NSLog(@"Task [%@] - [%d] succeeded.", inputFile , [task processIdentifier]);
+            
             
             NSString *txtOutPutFile = [outPutFile stringByAppendingString:@"\r\n"];
             
-            [[[uploadAreaFile textStorage] mutableString] appendString: txtOutPutFile];
+//            [[[uploadAreaFile textStorage] mutableString] appendString: txtOutPutFile];
             
-            lineResult =@"Success"; 
+//            [[uploadAreaFile textStorage] performSelectorOnMainThread:@selector(appendAttributedString:)
+//                                                           withObject:txtOutPutFile
+//                                                        waitUntilDone:YES];
+            
+            NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:txtOutPutFile];
+            
+            NSLog(@" out put file = %@", str);
+            
+            
+            [[uploadAreaFile textStorage] performSelectorOnMainThread:@selector(appendAttributedString:) withObject:str waitUntilDone:NO];
+            
+            lineResult = [NSString stringWithFormat:@"Success"];
+            
+            NSLog(@"Task [%@] - [%d] succeeded.", inputFile , [task processIdentifier]);
             
             
         }else {
-            lineResult = @"termination or fail";
+            lineResult = [NSString stringWithFormat:@"Task [%@] termination or fail", fileName];
             NSLog(@"Task [%@] - [%d] failed.", inputFile, [task processIdentifier]);
         }
         
         [encodeStatus setStringValue:lineResult];
         [btnEncode setEnabled:YES];
         [btnCancelEncode setEnabled:NO];
+        
         
     }];
     
@@ -229,8 +250,13 @@ FwFtpCreateDir  *ftpCreateDir;
     [fhOutput readInBackgroundAndNotify];
     //[fhError readInBackgroundAndNotify];
     
-    [task autorelease];
+//    [task autorelease];
+    
+    [task waitUntilExit];
+    
+    [unixStandardOutputPipe release];
 
+    [task release];
     
 }
 
@@ -296,13 +322,19 @@ FwFtpCreateDir  *ftpCreateDir;
                     
                     if (status == 0){
                         
-                        NSLog(@"Task [%@] - [%d] succeeded.", inputFile , [task processIdentifier]);
                         
                         NSString *txtOutPutFile = [outPutFile stringByAppendingString:@"\r\n"];
                         
-                        [[[uploadAreaFile textStorage] mutableString] appendString: txtOutPutFile];
+                        NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:txtOutPutFile];
                         
-                        lineResult =@"Success";
+                        NSLog(@" out put file = %@", str);
+                        
+                        
+                        [[uploadAreaFile textStorage] performSelectorOnMainThread:@selector(appendAttributedString:) withObject:str waitUntilDone:NO];
+                        
+                        lineResult = [NSString stringWithFormat:@"Success"];
+                        
+                        NSLog(@"Task [%@] - [%d] succeeded.", inputFile , [task processIdentifier]);
                         
                         
                     }else {
@@ -315,14 +347,20 @@ FwFtpCreateDir  *ftpCreateDir;
                     
                 }];
                 
-                NSLog(@"Task arguments is : %@", [task arguments]);
+//                NSLog(@"Task arguments is : %@", [task arguments]);
                 
                 [task launch];
                 
                 [fhOutput readInBackgroundAndNotify];
                 //[fhError readInBackgroundAndNotify];
                 
-                [task autorelease];
+//                [task autorelease];
+                
+                [task waitUntilExit];
+                
+                [unixStandardOutputPipe release];
+                
+                [task release];
             }
             
             
@@ -339,8 +377,14 @@ FwFtpCreateDir  *ftpCreateDir;
 
 - (void)notifiedForStdOutput: (NSNotification *)notified{
     
+    
+//    NSFileHandle *fhOutput = [notified object];
+    
+//    NSData *data = [fhOutput readDataToEndOfFile];
+    
+    
     NSData * data = [[notified userInfo] valueForKey:NSFileHandleNotificationDataItem];
-    //    NSLog(@"standard data ready %ld bytes",data.length);
+//    NSLog(@"standard data ready %ld bytes",data.length);
     
     if ([data length]){
         
@@ -353,7 +397,7 @@ FwFtpCreateDir  *ftpCreateDir;
         
     }
     
-    if (task != nil) {
+    if (task != nil) {        
         
         [fhOutput readInBackgroundAndNotify];
     }
@@ -453,9 +497,22 @@ FwFtpCreateDir  *ftpCreateDir;
                         
                         NSString *fileExt = [[FwString sharedInstance] getExtensionFromPath:localFilePath];
                         
+                                               
                         if ([fileExt isEqualToString:@"mp4"]) {
+                            
+                            NSString *pfileName;
+                            
+                            if ([fileName hasSuffix:@"_1"] || [fileName hasSuffix:@"_3"]) {
+                                long int length = [fileName length];
+                                pfileName =  [fileName substringWithRange:NSMakeRange(0,length -2)];
+                            } else {
+                                pfileName = fileName;
+                            }
+                            
+                            NSLog(@"File Name for Ftp = %@ from [%@]", pfileName, fileName);
+
                         
-                            NSString *programName = [preProgram stringByAppendingString:fileName];
+                            NSString *programName = [preProgram stringByAppendingString:pfileName];
                             
                             NSString *remotePath;
                             
@@ -474,7 +531,7 @@ FwFtpCreateDir  *ftpCreateDir;
                             
                             [locateAndRemoteFiles addObject:temp];
                         
-                        }else{
+                        } else {
                             [uploadStatus setStringValue:@"Please select correct format: mp4"];
                         }
 
@@ -522,9 +579,11 @@ FwFtpCreateDir  *ftpCreateDir;
         [nc addObserver:self selector:@selector(notifiedFtpCreateDirStatusChange:) name:CreateDirStatusChangedNotification object:ftpCreateDir];
         
         [ftpCreateDir createFolder:remotePath];
+        
+        NSLog(@"step 2 create folder if not exist on server");
     }
     
-    NSLog(@"step 2 check folder exist");
+    
     
 }
 

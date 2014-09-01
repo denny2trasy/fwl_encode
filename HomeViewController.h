@@ -10,7 +10,7 @@
 
 @interface HomeViewController : FwViewController{
     
-    IBOutlet NSPopUpButton *encodeFormatList;
+//    IBOutlet NSPopUpButton *encodeFormatList;
     IBOutlet NSTextView  *encodeAreaFiles;
     IBOutlet NSTextField *encodeStatus;
     

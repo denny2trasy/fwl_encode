@@ -74,7 +74,7 @@
         NSArray *name = [lastPath componentsSeparatedByString:@"."];
             
         if ([name count] > 0) {
-            NSString *extension = [name objectAtIndex:1];
+            NSString *extension = [name objectAtIndex:([name count] - 1)];
             return extension;
         }    
     }  
@@ -95,8 +95,9 @@
         NSArray *name = [lastPath componentsSeparatedByString:@"."];
         
         if ([name count] > 0) {
-            NSString *filename = [name objectAtIndex:0];
-            return filename;
+            NSString *fileName = [name objectAtIndex:0];
+            
+            return fileName;
         }
     }
     
@@ -432,8 +433,10 @@
 - (NSString *)formatEncodingResult:(NSString *)outputString{
     
     NSArray *temp = [outputString componentsSeparatedByString:@"("];
-
-    return [temp objectAtIndex:0];
+    
+    NSString *item = [temp objectAtIndex:0];
+    
+    return [item stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
 }
 
