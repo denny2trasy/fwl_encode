@@ -18,14 +18,17 @@
 
 @implementation HomeViewController
 
-NSTask *task;
-NSPipe *unixStandardOutputPipe;
+
+//NSTask *task;
+//NSPipe *unixStandardOutputPipe;
 NSPipe *unixStandardErrorPipe;
 NSPipe *unixStandardInputPipe;
-NSFileHandle *fhOutput;
+//NSFileHandle *fhOutput;
 NSFileHandle *fhError;
 NSData *standardOutputData;
 NSData *standardErrorData;
+
+NSMutableArray *tasks;
 
 FwFtpUpload *ftpUpload;
 FwFtpList *ftpList;
@@ -72,9 +75,21 @@ FwFtpCreateDir  *ftpCreateDir;
 
 - (IBAction)cancelEncode:(id)sender{
     
-    if ((task != nil)  && [task isRunning]) {
-        NSLog(@"task terminate by manually");
-        [task terminate];
+//    if ((task != nil)  && [task isRunning]) {
+//        NSLog(@"task terminate by manually");
+//        [task terminate];
+//    }
+    
+    long int tasksCount = [tasks count];
+    
+    for (int i = 0; i < tasksCount; i++) {
+        
+        NSTask *temp = [tasks objectAtIndex: i];
+        
+        if ((temp != nil) && [temp isRunning]) {
+            NSLog(@"task terminate by manually");
+            [temp terminate];
+        }
     }
     
 }
@@ -114,6 +129,8 @@ FwFtpCreateDir  *ftpCreateDir;
         if (fileCount > 0) {
             
             NSFileManager *fm = [NSFileManager defaultManager];
+            
+            tasks = [[NSMutableArray alloc] init];
             
             for (int i = 0; i < fileCount; i++) {
                 
@@ -166,7 +183,7 @@ FwFtpCreateDir  *ftpCreateDir;
     
     // run task to encode
     
-    task = [[NSTask alloc] init];
+    NSTask *task = [[NSTask alloc] init];
     
     [task setLaunchPath:@"/usr/bin/HandBrakeCLI"];
     
@@ -186,10 +203,10 @@ FwFtpCreateDir  *ftpCreateDir;
     
     // task notification
     
-    unixStandardOutputPipe = [[NSPipe alloc] init];
+    NSPipe *unixStandardOutputPipe = [[NSPipe alloc] init];
     //unixStandardErrorPipe = [[NSPipe alloc] init];
     
-    fhOutput = [unixStandardOutputPipe fileHandleForReading];
+    NSFileHandle *fhOutput = [unixStandardOutputPipe fileHandleForReading];
     //fhError = [unixStandardErrorPipe fileHandleForReading];
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -232,7 +249,8 @@ FwFtpCreateDir  *ftpCreateDir;
             
             
         }else {
-            lineResult = [NSString stringWithFormat:@"Task [%@] termination or fail", fileName];
+            lineResult =@"terminate or fail";
+//            lineResult = [NSString stringWithFormat:@"Task [%@] termination or fail", fileName];
             NSLog(@"Task [%@] - [%d] failed.", inputFile, [task processIdentifier]);
         }
         
@@ -245,18 +263,20 @@ FwFtpCreateDir  *ftpCreateDir;
     
 //    NSLog(@"Task arguments is : %@", [task arguments]);
     
-    [task launch];    
+    [task launch];
+    
+    [tasks addObject:task];
     
     [fhOutput readInBackgroundAndNotify];
-    //[fhError readInBackgroundAndNotify];
+    //[fhError readInBackgroundAndNotify];    
     
-//    [task autorelease];
+    [task autorelease];
     
-    [task waitUntilExit];
-    
-    [unixStandardOutputPipe release];
-
-    [task release];
+//    [task waitUntilExit];
+//    
+//    [unixStandardOutputPipe release];
+//
+//    [task release];
     
 }
 
@@ -291,7 +311,7 @@ FwFtpCreateDir  *ftpCreateDir;
                 
                 // run task to encode
                 
-                task = [[NSTask alloc] init];
+                NSTask *task = [[NSTask alloc] init];
                 
                 [task setLaunchPath:@"/usr/bin/HandBrakeCLI"];
                 
@@ -299,10 +319,10 @@ FwFtpCreateDir  *ftpCreateDir;
                 
                 // task notification
                 
-                unixStandardOutputPipe = [[NSPipe alloc] init];
+                NSPipe *unixStandardOutputPipe = [[NSPipe alloc] init];
                 //unixStandardErrorPipe = [[NSPipe alloc] init];
                 
-                fhOutput = [unixStandardOutputPipe fileHandleForReading];
+                NSFileHandle *fhOutput = [unixStandardOutputPipe fileHandleForReading];
                 //fhError = [unixStandardErrorPipe fileHandleForReading];
                 
                 NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -351,16 +371,18 @@ FwFtpCreateDir  *ftpCreateDir;
                 
                 [task launch];
                 
+                [tasks addObject:task];
+                
                 [fhOutput readInBackgroundAndNotify];
                 //[fhError readInBackgroundAndNotify];
                 
-//                [task autorelease];
+                [task autorelease];
                 
-                [task waitUntilExit];
-                
-                [unixStandardOutputPipe release];
-                
-                [task release];
+//                [task waitUntilExit];
+//                
+//                [unixStandardOutputPipe release];
+//                
+//                [task release];
             }
             
             
@@ -397,10 +419,13 @@ FwFtpCreateDir  *ftpCreateDir;
         
     }
     
-    if (task != nil) {        
-        
-        [fhOutput readInBackgroundAndNotify];
-    }
+
+    [[notified object] readInBackgroundAndNotify];
+    
+//    if (task != nil) {        
+//        
+//        [fhOutput readInBackgroundAndNotify];
+//    }
     
 }
 
@@ -417,15 +442,19 @@ FwFtpCreateDir  *ftpCreateDir;
         NSLog(@"-- error : %@", outputString);
     }
     
-    if (task != nil) {
-        
-        [fhError readInBackgroundAndNotify];
-    }
+    [[notified object] readInBackgroundAndNotify];
+    
+//    if (task != nil) {
+//        
+//        [fhError readInBackgroundAndNotify];
+//    }
     
 }
 
 
 - (void)notifiedForComplete: (NSNotification *)anotificatied{
+    
+    NSTask *task = [anotificatied object];
     
     NSLog(@"task completed or was stopped with exit code %d",[task terminationStatus]);
     task = nil;
