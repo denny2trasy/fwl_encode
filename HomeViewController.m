@@ -185,7 +185,13 @@ FwFtpCreateDir  *ftpCreateDir;
     
     NSTask *task = [[NSTask alloc] init];
     
-    [task setLaunchPath:@"/usr/bin/HandBrakeCLI"];
+//    [task setLaunchPath:@"/usr/bin/HandBrakeCLI"];
+    
+    NSString *t_path = [[NSBundle mainBundle] pathForResource:@"HandBrakeCLI" ofType:@""];
+
+    NSLog(@"task path = %@", t_path);
+    
+    [task setLaunchPath: t_path];
     
     // get and set Arguments base on inputFile and fileFormat
     
@@ -313,7 +319,13 @@ FwFtpCreateDir  *ftpCreateDir;
                 
                 NSTask *task = [[NSTask alloc] init];
                 
-                [task setLaunchPath:@"/usr/bin/HandBrakeCLI"];
+                //[task setLaunchPath:@"/usr/bin/HandBrakeCLI"];
+                
+                NSString *t_path = [[NSBundle mainBundle] pathForResource:@"HandBrakeCLI" ofType:@""];
+                
+                NSLog(@"task path = %@", t_path);
+                
+                [task setLaunchPath: t_path];
                 
                 [task setArguments:arguments];
                 
@@ -751,6 +763,8 @@ FwFtpCreateDir  *ftpCreateDir;
     NSLog(@"List Status:- %@",status);
     
     if ([status isEqualToString:@"List succeeded"]) {
+        
+        [channelFolderList removeAllItems];
         
         NSMutableArray  *list = [data listFolderName];
         

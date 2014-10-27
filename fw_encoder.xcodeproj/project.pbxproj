@@ -27,6 +27,7 @@
 		B09CC2C31970E44200537039 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09CC2C11970E44200537039 /* MainMenu.xib */; };
 		B09CC2C61970E44200537039 /* fw_encoder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B09CC2C41970E44200537039 /* fw_encoder.xcdatamodeld */; };
 		B0B6CD271978CA480070EB59 /* FwFtpUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B6CD261978CA480070EB59 /* FwFtpUpload.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B0F33CA019E63F0D0049F3D6 /* HandBrakeCLI in Resources */ = {isa = PBXBuildFile; fileRef = B0F33C9F19E63F0D0049F3D6 /* HandBrakeCLI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +51,7 @@
 		B06AFF8A1975766C007E537C /* FwString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwString.h; sourceTree = "<group>"; };
 		B06AFF8B1975766C007E537C /* FwString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwString.m; sourceTree = "<group>"; };
 		B092005B197380FB005386A0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		B09CC2A91970E44200537039 /* fw_encoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = fw_encoder.app; path = fwl_encoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B09CC2A91970E44200537039 /* fwl_encoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fwl_encoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09CC2AC1970E44200537039 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B09CC2AF1970E44200537039 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B09CC2B01970E44200537039 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -66,6 +67,7 @@
 		B09CC2C51970E44200537039 /* fw_encoder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fw_encoder.xcdatamodel; sourceTree = "<group>"; };
 		B0B6CD251978CA480070EB59 /* FwFtpUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwFtpUpload.h; sourceTree = "<group>"; };
 		B0B6CD261978CA480070EB59 /* FwFtpUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwFtpUpload.m; sourceTree = "<group>"; };
+		B0F33C9F19E63F0D0049F3D6 /* HandBrakeCLI */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = HandBrakeCLI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		B09CC2A01970E44200537039 = {
 			isa = PBXGroup;
 			children = (
+				B0F33C9F19E63F0D0049F3D6 /* HandBrakeCLI */,
 				B0725CAF1977D182004B4BF2 /* Controllers */,
 				B06AFF8919757471007E537C /* Utils */,
 				B09CC2B21970E44200537039 /* fw_encoder */,
@@ -124,7 +127,7 @@
 		B09CC2AA1970E44200537039 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B09CC2A91970E44200537039 /* fw_encoder.app */,
+				B09CC2A91970E44200537039 /* fwl_encoder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,7 +209,7 @@
 			);
 			name = fwl_encoder;
 			productName = fw_encoder;
-			productReference = B09CC2A91970E44200537039 /* fw_encoder.app */;
+			productReference = B09CC2A91970E44200537039 /* fwl_encoder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -248,6 +251,7 @@
 				B0675474197CFC6A00F8E897 /* SettingView.xib in Resources */,
 				B0675479197CFC9300F8E897 /* HelpView.xib in Resources */,
 				B047F21E197FBE5B00A04CE1 /* myapp.iconset in Resources */,
+				B0F33CA019E63F0D0049F3D6 /* HandBrakeCLI in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +260,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		B09CC2D0197215DA00537039 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -391,6 +395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fw_encoder/fw_encoder-Prefix.pch";
 				INFOPLIST_FILE = "fw_encoder/fw_encoder-Info.plist";
