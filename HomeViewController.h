@@ -27,6 +27,11 @@
     
     NSOperationQueue *processingQueue;
     
+    // setting code
+    IBOutlet    NSTextField *defaultPath;
+    IBOutlet    NSTextField *userName;
+    IBOutlet    NSTextField *domainOrIP;
+    
 }
 
 // property for FTP
@@ -47,5 +52,13 @@
 - (IBAction)listAction:(id)sender;
 
 - (void)uploadFileToServer:(NSString *)localFileAndRemoteProgramNameAndRemotePathAndRemoteFile;
+
+// setting action
+- (IBAction)loadAction:(id)sender;
+- (IBAction)settingAction:(id)sender;
+- (IBAction)clearAction:(id)sender;
+
+// help action
+- (IBAction)helpAction:(id)sender;
 
 @end

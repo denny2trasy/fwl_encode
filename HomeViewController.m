@@ -71,6 +71,73 @@ FwFtpCreateDir  *ftpCreateDir;
 }
 
 
+
+# pragma setting Action
+
+- (IBAction)loadAction:(id)sender{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"fw_encode.plist"];
+    NSArray *myData = [[[NSArray alloc] initWithContentsOfFile:appFile] autorelease];
+    
+    NSLog(@"Load default value from file = %@", myData);
+    
+    NSArray *temp = [myData objectAtIndex:0];
+    
+    [defaultPath setStringValue:[temp objectAtIndex:0]];
+    [userName setStringValue:[temp objectAtIndex:1]];
+    [domainOrIP setStringValue:[temp objectAtIndex:2]];
+    
+}
+
+- (IBAction)settingAction:(id)sender{
+    
+    NSString *userDefaultPath = [NSString stringWithFormat:@"%@", [defaultPath stringValue]];
+    NSString *userDefaultFTPUser = [NSString stringWithFormat:@"%@", [userName stringValue]];
+    NSString *userDefaultFTPDomain = [NSString stringWithFormat:@"%@", [domainOrIP stringValue]];
+    
+    NSArray *settings = [NSArray arrayWithObjects:userDefaultPath, userDefaultFTPUser, userDefaultFTPDomain, nil];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    
+    // confirm if paths exist
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    BOOL isDir;
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    if ([manager fileExistsAtPath:documentsDirectory isDirectory: &isDir]) {
+        NSString *appSettingFile = [documentsDirectory stringByAppendingPathComponent:@"fw_encode.plist"];
+        
+        NSLog(@"App setting file = %@", appSettingFile);
+        
+        [[NSArray arrayWithObjects:settings, nil] writeToFile:appSettingFile atomically:NO];
+        
+        
+    }else{
+        NSLog(@"Documents directory not found!");
+    }
+}
+
+- (IBAction)clearAction:(id)sender{
+    
+    NSLog(@"Clear Action");
+    
+    [defaultPath setStringValue:@""];
+    [userName setStringValue:@""];
+    [domainOrIP setStringValue:@""];
+    
+}
+
+# pragma help Action
+
+- (IBAction)helpAction:(id)sender{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://192.92.189.193:23888/box/helps/manual"]];
+}
+
+
+
 # pragma btn Action for Encode
 
 - (IBAction)cancelEncode:(id)sender{
@@ -153,9 +220,9 @@ FwFtpCreateDir  *ftpCreateDir;
                         
                         NSLog(@"file [%d] = %@", i, inputFile);
                         
-//                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
+                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
                         
-                        [self encodeFileForGloo:inputFile with:fileFormat];
+//                        [self encodeFileForGloo:inputFile with:fileFormat];
                         
                     }else{
                         [encodeStatus setStringValue:@"Please choose correct file with correct format"];
