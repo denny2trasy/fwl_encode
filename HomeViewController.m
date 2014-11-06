@@ -133,7 +133,8 @@ FwFtpCreateDir  *ftpCreateDir;
 # pragma help Action
 
 - (IBAction)helpAction:(id)sender{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://192.92.189.193:23888/box/helps/manual"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://gloo.tv/box/helps/manual"]];
+//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://182.92.189.193:23888/box/helps/manual"]];
 }
 
 
@@ -220,9 +221,9 @@ FwFtpCreateDir  *ftpCreateDir;
                         
                         NSLog(@"file [%d] = %@", i, inputFile);
                         
-                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
+//                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
                         
-//                        [self encodeFileForGloo:inputFile with:fileFormat];
+                        [self encodeFileForGloo:inputFile with:fileFormat];
                         
                     }else{
                         [encodeStatus setStringValue:@"Please choose correct file with correct format"];
@@ -901,34 +902,68 @@ FwFtpCreateDir  *ftpCreateDir;
 
 - (BOOL)checkFtpSetting{
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"fw_encode.plist"];
-    
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    if ([fm fileExistsAtPath:appFile]) {
-        NSArray *myData = [[[NSArray alloc] initWithContentsOfFile:appFile] autorelease];
+    // New version ,
+    // check ftpdomain and ftpuser
+    NSString *inputDomain = [domainOrIP stringValue];
+    if ([inputDomain isEqualToString:@""]) {
         
-        NSLog(@"Load default value from file = %@", myData);
+        NSString *message =@"Please input or load domain first";
         
-        NSArray *temp = [myData objectAtIndex:0];
+        [uploadStatus setStringValue:message];
         
-        
-        self.defaultFolder = (NSString *)[temp objectAtIndex:0];
-        self.defaultFTPUser = (NSString *)[temp objectAtIndex:1];
-        self.defaultFTPDomain = (NSString *)[temp objectAtIndex:2];
-        
-        NSLog(@"default Foloder from file = %@", self.defaultFolder);
-        NSLog(@"default FTPUser from file = %@", self.defaultFTPUser);
-        NSLog(@"default FTPDomain from file = %@", self.defaultFTPDomain);
-        
-        return YES;
-        
-    } else{
-        [uploadStatus setStringValue:@"Please click 'setting' button to set your ftp user, domain"];
         return NO;
+    }else{
+        self.defaultFTPDomain = inputDomain;
     }
+    
+    NSString *inputUserName = [userName stringValue];
+    if ([inputUserName isEqualToString:@""]) {
+        
+        NSString *message =@"Please input or load user name first";
+        
+        [uploadStatus setStringValue:message];
+        
+        return NO;
+    }else{
+        self.defaultFTPUser = inputUserName;
+        return YES;
+    }
+
+    
+    
+    
+    // Below is old version
+    // in old version , there are three button for switching, so need load setting first
+    // uncomment at 2014.10.31 by denny
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"fw_encode.plist"];
+//
+//    NSFileManager *fm = [NSFileManager defaultManager];
+//
+//    if ([fm fileExistsAtPath:appFile]) {
+//        NSArray *myData = [[[NSArray alloc] initWithContentsOfFile:appFile] autorelease];
+//        
+//        NSLog(@"Load default value from file = %@", myData);
+//        
+//        NSArray *temp = [myData objectAtIndex:0];
+//        
+//        
+//        self.defaultFolder = (NSString *)[temp objectAtIndex:0];
+//        self.defaultFTPUser = (NSString *)[temp objectAtIndex:1];
+//        self.defaultFTPDomain = (NSString *)[temp objectAtIndex:2];
+//        
+//        NSLog(@"default Foloder from file = %@", self.defaultFolder);
+//        NSLog(@"default FTPUser from file = %@", self.defaultFTPUser);
+//        NSLog(@"default FTPDomain from file = %@", self.defaultFTPDomain);
+//        
+//        return YES;
+//        
+//    } else{
+//        [uploadStatus setStringValue:@"Please click 'setting' button to set your ftp user, domain"];
+//        return NO;
+//    }
     
     
 
