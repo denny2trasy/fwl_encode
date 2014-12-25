@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02242CC1A441EC3009E4CE5 /* FwFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B02242CB1A441EC3009E4CE5 /* FwFileInfo.m */; };
 		B047F21E197FBE5B00A04CE1 /* myapp.iconset in Resources */ = {isa = PBXBuildFile; fileRef = B047F21D197FBE5B00A04CE1 /* myapp.iconset */; };
 		B0675457197CA62800F8E897 /* FwFtpList.m in Sources */ = {isa = PBXBuildFile; fileRef = B0675456197CA62800F8E897 /* FwFtpList.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		B067545A197CC08500F8E897 /* FwFtpCreateDir.m in Sources */ = {isa = PBXBuildFile; fileRef = B0675459197CC08500F8E897 /* FwFtpCreateDir.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B02242CA1A441EC3009E4CE5 /* FwFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwFileInfo.h; sourceTree = "<group>"; };
+		B02242CB1A441EC3009E4CE5 /* FwFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwFileInfo.m; sourceTree = "<group>"; };
 		B030C6C6198A0C730005AE6A /* fwl_encoder copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "fwl_encoder copy-Info.plist"; path = "/Users/denny/private/work/git/fw_encoder/fwl_encoder copy-Info.plist"; sourceTree = "<absolute>"; };
 		B047F21D197FBE5B00A04CE1 /* myapp.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = myapp.iconset; path = ../myapp.iconset; sourceTree = "<group>"; };
 		B0675455197CA62800F8E897 /* FwFtpList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwFtpList.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				B0675456197CA62800F8E897 /* FwFtpList.m */,
 				B0675458197CC08500F8E897 /* FwFtpCreateDir.h */,
 				B0675459197CC08500F8E897 /* FwFtpCreateDir.m */,
+				B02242CA1A441EC3009E4CE5 /* FwFileInfo.h */,
+				B02242CB1A441EC3009E4CE5 /* FwFileInfo.m */,
 			);
 			name = Ftp;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				B067546E197CFBA700F8E897 /* HomeViewController.m in Sources */,
 				B0675473197CFC6A00F8E897 /* SettingViewController.m in Sources */,
 				B0675478197CFC9300F8E897 /* HelpViewController.m in Sources */,
+				B02242CC1A441EC3009E4CE5 /* FwFileInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +392,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fw_encoder/fw_encoder-Prefix.pch";
 				INFOPLIST_FILE = "fw_encoder/fw_encoder-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -400,7 +406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fw_encoder/fw_encoder-Prefix.pch";
 				INFOPLIST_FILE = "fw_encoder/fw_encoder-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

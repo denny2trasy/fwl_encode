@@ -75,14 +75,14 @@ NSString * const CreateDirStatusChangedNotification = @"Create Dir Status";
 
 - (void)createDidStart
 {
-    [self updateStatus:@"Creating"];
+    [self updateStatus:@"Setting"];
 }
 
 
 - (void)createDidStopWithStatus:(NSString *)statusString
 {
     if (statusString == nil) {
-        statusString = @"Create succeeded";
+        statusString = @"Succeeded";
     }
     [self updateStatus:statusString];
 }

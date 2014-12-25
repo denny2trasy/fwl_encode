@@ -872,7 +872,7 @@ FwFtpCreateDir  *ftpCreateDir;
     FwFtpCreateDir * data = [notified object];
     NSString *status = data.status;
     NSLog(@"Create Dir Status %@",status);
-    NSString *temp = [NSString stringWithFormat:@"Creating Folder Status: %@",status];
+    NSString *temp = [NSString stringWithFormat:@"Setting Cloud Parameters: %@",status];
     [uploadStatus setStringValue: temp];
     
 }

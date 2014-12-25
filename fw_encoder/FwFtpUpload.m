@@ -8,6 +8,7 @@
 
 #import "FwFtpUpload.h"
 #import "FwString.h"
+#import "FwFileInfo.h"
 
 #include <CFNetwork/CFNetwork.h>
 
@@ -26,12 +27,16 @@ enum{
 // Properties about stream
 @property (nonatomic, strong, readwrite) NSOutputStream *   networkStream;
 @property (nonatomic, strong, readwrite) NSInputStream *    fileStream;
-@property (nonatomic, assign, readonly)  uint8_t *          buffer;
-@property (nonatomic, assign, readwrite) size_t             bufferOffset;
-@property (nonatomic, assign, readwrite) size_t             bufferLimit;
+@property (nonatomic, assign, readonly)  uint8_t *         buffer;
+@property (nonatomic, assign, readwrite) uint64_t           bufferOffset;
+@property (nonatomic, assign, readwrite) uint64_t           bufferLimit;
+@property (nonatomic, assign, readwrite) uint64_t           serverSize;
 
 // Properties about files
 @property (nonatomic, assign, readwrite) NSMutableArray *    files;
+@property (nonatomic, assign, readwrite) uint64_t            localSize;
+@property (nonatomic, assign, readwrite) int                  fileTotalCount;
+@property (nonatomic, assign, readwrite) int                  currentNumber;
 
 
 
@@ -63,6 +68,8 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
         self.passWord = password;
         self.serverAddress = serverAddress;
         self.files = files;
+        self.currentNumber = 1;
+        self.fileTotalCount = files.count;
     }
     return self;
 
@@ -155,6 +162,7 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
     [self updateStatus:statusString];
     
     if (self.files != nil && [self.files count] > 0) {
+        self.currentNumber += 1;
         [self uploadFileAtFirstPlace];
     }
 }
@@ -215,6 +223,9 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
         // NSURLConnection will do it for us.
         
         self.fileStream = [NSInputStream inputStreamWithFileAtPath:localFile];
+        // get local file size
+        self.localSize = [FwFileInfo getFileSize: localFile];
+        
         assert(self.fileStream != nil);
         
         [self.fileStream open];
@@ -256,6 +267,7 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
     
     switch (eventCode) {
         case NSStreamEventOpenCompleted: {
+            self.serverSize = 0;
             [self updateStatus:@"Opened connection"];
             NSLog(@"Opened connection");
         } break;
@@ -296,6 +308,12 @@ NSString * const UploadStatusChangedNotification = @"Upload Status";
                     NSLog(@"Network write error");
                 } else {
                     self.bufferOffset += bytesWritten;
+                    self.serverSize += bytesWritten;
+                    
+                    float percent = (float)self.serverSize / self.localSize * 100.0;
+                    NSString *temp = [NSString stringWithFormat:@"Task %i of %i sending %.2f %%",self.currentNumber, self.fileTotalCount,percent];
+//                    NSString *temp = [NSString stringWithFormat:@"sending %llu/%llu", self.serverSize, self.localSize];
+                    [self updateStatus:temp];
                 }
             }
         } break;
