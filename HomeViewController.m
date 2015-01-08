@@ -133,8 +133,8 @@ FwFtpCreateDir  *ftpCreateDir;
 # pragma help Action
 
 - (IBAction)helpAction:(id)sender{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://gloo.tv/box/helps/manual"]];
-//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://182.92.189.193:23888/box/helps/manual"]];
+//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://gloo.tv/box/helps/manual"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://182.92.189.193:23888/box/helps/manual"]];
 }
 
 
@@ -221,9 +221,9 @@ FwFtpCreateDir  *ftpCreateDir;
                         
                         NSLog(@"file [%d] = %@", i, inputFile);
                         
-//                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
+                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
                         
-                        [self encodeFileForGloo:inputFile with:fileFormat];
+//                        [self encodeFileForGloo:inputFile with:fileFormat];
                         
                     }else{
                         [encodeStatus setStringValue:@"Please choose correct file with correct format"];
