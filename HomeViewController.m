@@ -70,6 +70,22 @@ FwFtpCreateDir  *ftpCreateDir;
     }
 }
 
+- (void)setDefaultDisk{
+    
+    NSArray  *list = [NSArray arrayWithObjects:@"Disk1",@"Disk2", nil];
+    
+    [ftpDiskList removeAllItems];
+    
+    for (int i= 0; i < [list count]; i++) {
+        NSString *temp = [NSString stringWithFormat:@"%@",[list objectAtIndex:i]];
+        NSLog(@" list %@",temp);
+        [ftpDiskList addItemWithTitle:temp];
+    }
+    
+    NSLog(@"default Disk %@",list);
+
+}
+
 
 
 # pragma setting Action
@@ -133,8 +149,8 @@ FwFtpCreateDir  *ftpCreateDir;
 # pragma help Action
 
 - (IBAction)helpAction:(id)sender{
-//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://gloo.tv/box/helps/manual"]];
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://182.92.189.193:23888/box/helps/manual"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://gloo.tv/box/helps/manual"]];
+//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://182.92.189.193:23888/box/helps/manual"]];
 }
 
 
@@ -221,9 +237,9 @@ FwFtpCreateDir  *ftpCreateDir;
                         
                         NSLog(@"file [%d] = %@", i, inputFile);
                         
-                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
+//                        [self encodeFileForFlo2Screen:inputFile with:fileFormat];
                         
-//                        [self encodeFileForGloo:inputFile with:fileFormat];
+                        [self encodeFileForGloo:inputFile with:fileFormat];
                         
                     }else{
                         [encodeStatus setStringValue:@"Please choose correct file with correct format"];
@@ -588,7 +604,9 @@ FwFtpCreateDir  *ftpCreateDir;
             
             if (count > 0) {
                 
-                NSString *channelFolder = [channelFolderList titleOfSelectedItem];
+//                NSString *channelFolder = [channelFolderList titleOfSelectedItem];
+                
+                NSString *channelFolder =[self channelFolderWithDisk];
                 
                 NSFileManager *fm = [NSFileManager defaultManager];
                 
@@ -661,6 +679,12 @@ FwFtpCreateDir  *ftpCreateDir;
         }
     }
     
+}
+
+- (NSString *)channelFolderWithDisk{
+    NSString *folder;
+    folder = [NSString stringWithFormat:@"%@/%@",[self getFtpDiskPath], [channelFolderList titleOfSelectedItem]];
+    return folder;
 }
 
 - (void)checkAndCreateFolderOnServer: (NSString *)channelFolder withProgramName: (NSString *) programName atRemotePath: (NSString *) remotePath{
@@ -808,7 +832,7 @@ FwFtpCreateDir  *ftpCreateDir;
         
         ftpList = [[FwFtpList alloc] initWithUserName:self.defaultFTPUser andPassWord:self.defaultFTPPwd andServerAddress:self.defaultFTPDomain];
         
-        NSString *remotePath =@"";
+        NSString *remotePath = [NSString stringWithFormat:@"%@/",[self getFtpDiskPath]];
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         
@@ -838,7 +862,10 @@ FwFtpCreateDir  *ftpCreateDir;
         
         for (int i= 0; i < [list count]; i++) {
             NSString *temp = [NSString stringWithFormat:@"%@",[list objectAtIndex:i]];
-            [channelFolderList addItemWithTitle:temp];
+            if (![temp isEqualToString:@"Disk2"]) {
+                [channelFolderList addItemWithTitle:temp];
+            }
+            
         }
         
     }
@@ -850,7 +877,15 @@ FwFtpCreateDir  *ftpCreateDir;
     
     if ([self checkFtpSetting] && [self checkPassword]) {
         
+        NSString *folderPath = [self getFtpDiskPath];
+        
         NSString  *folderName = [remoteFolderName stringValue];
+        
+        NSString *folder = [NSString stringWithFormat:@"%@/%@",folderPath,folderName];
+        
+        
+        NSLog(@"Folder = %@", folder);
+        
         
         FwFtpCreateDir  *ftpCreateDir;
         
@@ -860,7 +895,7 @@ FwFtpCreateDir  *ftpCreateDir;
         
         [nc addObserver:self selector:@selector(notifiedFtpCreateDirStatusChange:) name:CreateDirStatusChangedNotification object:ftpCreateDir];
         
-        [ftpCreateDir createFolder:folderName];
+        [ftpCreateDir createFolder:folder];
         
     }
     
@@ -877,9 +912,26 @@ FwFtpCreateDir  *ftpCreateDir;
     
 }
 
+- (NSString*)getFtpDiskPath{
+    
+    NSString *folderPath = [ftpDiskList titleOfSelectedItem];
+    
+    NSString *folder;
+    
+    if ([folderPath isEqualToString:@"Disk1"]) {
+        folder = @"";
+    }else{
+        folder = [NSString stringWithFormat:@"%@",folderPath];
+    }
+    
+    NSLog(@"Disk = %@", folder);
+    return folder;
+
+}
+
 
 //password:@"nEurAl51"
-- (BOOL)checkPassword{    
+- (BOOL)checkPassword{
     
     
     NSString *inputFTPPwd = [ftpPwd stringValue];    

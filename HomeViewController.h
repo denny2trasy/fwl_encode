@@ -22,6 +22,7 @@
     IBOutlet NSTextField *ftpPwd;
     IBOutlet NSTextField *remoteFolderName;
     IBOutlet NSPopUpButton *channelFolderList;
+    IBOutlet NSPopUpButton *ftpDiskList;
     IBOutlet NSTextView  *uploadAreaFile;
     IBOutlet NSTextField *uploadStatus;
     
