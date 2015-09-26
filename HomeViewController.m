@@ -625,7 +625,7 @@ FwFtpCreateDir  *ftpCreateDir;
                         NSString *fileExt = [[FwString sharedInstance] getExtensionFromPath:localFilePath];
                         
                                                
-                        if ([fileExt isEqualToString:@"mp4"]) {
+                        if ([fileExt isEqualToString:@"mp4"] || [fileExt isEqualToString:@"mov"]) {
                             
                             NSString *pfileName;
                             
