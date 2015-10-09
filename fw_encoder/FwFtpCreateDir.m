@@ -192,7 +192,8 @@ NSString * const CreateDirStatusChangedNotification = @"Create Dir Status";
             
             err = CFWriteStreamGetError( (__bridge CFWriteStreamRef) self.networkStream );
             if (err.domain == kCFStreamErrorDomainFTP) {
-                [self stopCreateWithStatus:[NSString stringWithFormat:@"FTP error %d", (int) err.error]];
+//                [self stopCreateWithStatus:[NSString stringWithFormat:@"FTP error %d", (int) err.error]];
+                [self stopCreateWithStatus:[NSString stringWithFormat:@""]];
             } else {
                 [self stopCreateWithStatus:@"Stream open error"];
             }

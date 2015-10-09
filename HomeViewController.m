@@ -149,8 +149,8 @@ FwFtpCreateDir  *ftpCreateDir;
 # pragma help Action
 
 - (IBAction)helpAction:(id)sender{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://gloo.tv/box/helps/manual"]];
-//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://182.92.189.193:23888/box/helps/manual"]];
+//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://gloo.tv/box/helps/manual"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://119.9.95.196/box/helps/manual"]];
 }
 
 

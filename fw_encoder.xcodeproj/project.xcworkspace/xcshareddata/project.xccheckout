@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6BF9126F-F53C-40F8-B465-AEE505D869A8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8DABC4059A05BD04FAD9D515C7860B5A6F45DC5A</key>
+		<string>github.com:denny2trasy/fwl_encode.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>gloo_encoder/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8DABC4059A05BD04FAD9D515C7860B5A6F45DC5A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:denny2trasy/fwl_encode.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8DABC4059A05BD04FAD9D515C7860B5A6F45DC5A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8DABC4059A05BD04FAD9D515C7860B5A6F45DC5A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>fw_encoder</string>
+		</dict>
+	</array>
+</dict>
+</plist>
