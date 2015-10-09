@@ -604,9 +604,9 @@ FwFtpCreateDir  *ftpCreateDir;
             
             if (count > 0) {
                 
-//                NSString *channelFolder = [channelFolderList titleOfSelectedItem];
+                NSString *channelFolder = [channelFolderList titleOfSelectedItem];
                 
-                NSString *channelFolder =[self channelFolderWithDisk];
+//                NSString *channelFolder =[self channelFolderWithDisk];
                 
                 NSFileManager *fm = [NSFileManager defaultManager];
                 
